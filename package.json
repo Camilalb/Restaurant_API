@@ -1,0 +1,19 @@
+{
+  "name": "apirestaurante",
+  "version": "1.0.0",
+  "description": "projeto final do modulo 4 do curso de webdev da resilia, uma api para restaurante, usando a rota pedidos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "author": "Camila Albuquerque",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
