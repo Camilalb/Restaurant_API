@@ -1,15 +1,6 @@
 const moment = require('moment')
-const pedido = require('../controller/pedido-controller')
+
 class Pedido {  
-
-    static verificaPrato(prato){
-        if (prato.length > 0 ){
-            return prato
-        } else {
-            throw new Error("Nenhum prato pedido")
-        }
-    }
-
     static verificaPagamento (formaDePagamento){
         if (formaDePagamento == "dinheiro" || formaDePagamento == "cartão"){
             return formaDePagamento
@@ -18,12 +9,14 @@ class Pedido {
         }
     }
 
-    static verificaValorMinimo (valorTotal){
-        if (valorTotal >= 20){
-            return valorTotal
+    static verificaValorMinimo (valor_total){
+        if (valor_total >= 20){
+            return valor_total
         }
         else{
+            console.log(valor_total)
             throw new Error("Pedido mínimo é de R$20")
+
         }
     }
 
@@ -32,15 +25,20 @@ class Pedido {
         return dataPedido
     }
 
-    constructor (prato, nomeDoCliente, motoboy, valorTotal, formaDePagamento, observacao){
-        this.prato = Pedido.verificaPrato(prato)
+    constructor (qtd_prato1, prato1, qtd_prato2, prato2, qtd_prato3, prato3, nomeDoCliente, motoboy, filial, valor_total, formaDePagamento, observacao){
+        this.qtd_prato1 = qtd_prato1
+        this.prato1 = prato1
+        this.qtd_prato2 = qtd_prato2
+        this.prato2 = prato2
+        this.qtd_prato3 = qtd_prato3
+        this.prato3 = prato3
         this.nomeDoCliente = nomeDoCliente
         this.motoboy = motoboy
-        this.valorTotal = Pedido.verificaValorMinimo(valorTotal)
+        this.filial = filial
+        this.valor_total = Pedido.verificaValorMinimo(valor_total)
         this.formaDePagamento = Pedido.verificaPagamento(formaDePagamento)
         this.observacao = observacao
-        this.data= Pedido.colocaData()
-        
+        this.data= Pedido.colocaData()        
     }
 }
 

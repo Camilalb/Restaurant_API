@@ -1,23 +1,18 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3300;
-
-
+const cors = require('cors')
 
 // Importando Controllers
 const pedido = require('./controller/pedido-controller')
 
 // Importando o Banco de Dados SQLite
-
-
+const bd = require('./infra/sqlite-db')
 
 // Middlewares
 app.use(express.json())
+app.use(cors())
 
-// Rotas das Entidades
-pedido(app)
+// Rotas da Entidade
+pedido(app,bd)
 
-
-app.listen(PORT, ()=>{
-    console.log(`Servidor rodando: http://localhost:${PORT}/`)
-})
+module.exports = app
