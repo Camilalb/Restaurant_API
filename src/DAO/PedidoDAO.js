@@ -45,6 +45,7 @@ class PedidoDAO {
     
     pegaPedidosPorMotoboy(motoboy) {
         const SELECT_BY_MOTOBOY = `SELECT * FROM PEDIDO WHERE MOTOBOY = ?`
+        console.log(motoboy)
         return new Promise((resolve, reject) => {
             this.bd.all(SELECT_BY_MOTOBOY, motoboy, (error, rows) => {
                 if (error) {
@@ -84,13 +85,13 @@ class PedidoDAO {
     //pegar somente os campos que podem sofrer atualização
     inserePedido(novoPedido) {
         return new Promise((resolve, reject) => {
-            this.bd.run(`INSERT INTO PEDIDO (NUMERO_DO_PEDIDO, QTD_PRATO1, PRATO1, QTD_PRATO2, PRATO2, QTD_PRATO3, PRATO3, NOME_DO_CLIENTE, MOTOBOY, FILIAL, VALOR_TOTAL, FORMA_DE_PAGAMENTO, OBSERVACAO, DATA_DO_PEDIDO) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);`,
-                [novoPedido.numero_do_pedido, novoPedido.qtd_prato1, novoPedido.prato1, novoPedido.qtd_prato2, novoPedido.prato2, novoPedido.qtd_prato3, novoPedido.prato3, novoPedido.nome_do_cliente, novoPedido.motoboy, novoPedido.filial, novoPedido.valor_total, novoPedido.forma_de_pagamento, novoPedido.observacao, novoPedido.data_do_pedido],
+            this.bd.run(`INSERT INTO PEDIDO (QTD_PRATO1, PRATO1, QTD_PRATO2, PRATO2, QTD_PRATO3, PRATO3, NOME_DO_CLIENTE, MOTOBOY, FILIAL, VALOR_TOTAL, FORMA_DE_PAGAMENTO, OBSERVACAO, DATA_DO_PEDIDO) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);`,
+                [...Object.values(novoPedido)],
                 (error) => {
                     if (error) {
                         reject({
-                            "mensagem": error.message,
-                            "erro": true
+                            "mensagem" : error.message,
+                            "erro": true                     
                         })
                     } else {
                         resolve({
@@ -104,9 +105,9 @@ class PedidoDAO {
 
     async deletaPedido(id) {
         try {
-            const pedido = await this.pegaPedidosPorId
+            const pedido = await this.pegaPedidosPorId(id)
             if(pedido.requisicao.length){
-                const DELETE = `DELETE FROM PEDIDO WHERE NUMERO_DO_PEDIDO = ?`
+                const DELETE = `DELETE FROM PEDIDO WHERE NUMERO_DO_PEDIDO = ?`                
                 return new Promise((resolve, reject) => {                
                     this.bd.run(DELETE, id, (error) => {
                         if (error) {
@@ -124,7 +125,7 @@ class PedidoDAO {
                 })
             }
             else{
-                throw new Error (`Pedido com número ${NUMERO_DO_PEDIDO} não existe`)
+                throw new Error (`Pedido com número ${id} não existe`)
             }
 
         } catch (error){
@@ -140,7 +141,7 @@ class PedidoDAO {
                 UPDATE PEDIDO
                 SET QTD_PRATO1 = ?, PRATO1 = ?, QTD_PRATO2 = ?, PRATO2 = ?, QTD_PRATO3 = ?, PRATO3 = ?, NOME_DO_CLIENTE = ?, MOTOBOY = ?, FILIAL = ?, VALOR_TOTAL = ?, FORMA_DE_PAGAMENTO = ?, OBSERVACAO = ?, DATA_DO_PEDIDO  = ? 
                 WHERE NUMERO_DO_PEDIDO = ?`
-                const array = [...pedido, id]
+                const array = [...Object.values(pedido), id]
                 this.bd.run(UPDATE, array, (error) => {
                     if (error) {
                         reject(error)

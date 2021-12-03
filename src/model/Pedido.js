@@ -10,13 +10,12 @@ class Pedido {
     }
 
     static verificaValorMinimo (valor_total){
+    
         if (valor_total >= 20){
             return valor_total
         }
         else{
-            console.log(valor_total)
             throw new Error("Pedido mínimo é de R$20")
-
         }
     }
 
@@ -26,19 +25,19 @@ class Pedido {
     }
 
     constructor (qtd_prato1, prato1, qtd_prato2, prato2, qtd_prato3, prato3, nomeDoCliente, motoboy, filial, valor_total, formaDePagamento, observacao){
-        this.qtd_prato1 = qtd_prato1
-        this.prato1 = prato1
-        this.qtd_prato2 = qtd_prato2
-        this.prato2 = prato2
-        this.qtd_prato3 = qtd_prato3
-        this.prato3 = prato3
-        this.nomeDoCliente = nomeDoCliente
-        this.motoboy = motoboy
-        this.filial = filial
-        this.valor_total = Pedido.verificaValorMinimo(valor_total)
-        this.formaDePagamento = Pedido.verificaPagamento(formaDePagamento)
-        this.observacao = observacao
-        this.data= Pedido.colocaData()        
+        this.QTD_PRATO1 = qtd_prato1
+        this.PRATO1 = prato1
+        this.QTD_PRATO2 = qtd_prato2
+        this.PRATO2 = prato2
+        this.QTD_PRATO3 = qtd_prato3
+        this.PRATO3 = prato3
+        this.NOME_DO_CLIENTE = nomeDoCliente
+        this.MOTOBOY = motoboy
+        this.FILIAL = filial
+        this.VALOR_TOTAL = Pedido.verificaValorMinimo(valor_total)
+        this.FORMA_DE_PAGAMENTO = Pedido.verificaPagamento(formaDePagamento)
+        this.OBSERVACAO = observacao
+        this.data_do_pedido= Pedido.colocaData()        
     }
 }
 
