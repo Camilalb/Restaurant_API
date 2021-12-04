@@ -16,7 +16,7 @@ A aplicação desenvolvida em NodeJs, com Express e SQLite, para gerar e adminis
 ![image]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
 
   
- ##Inicializando o projeto
+ ## Inicializando o projeto
 
  - Clone este repositório no seu computador: 
 
@@ -50,3 +50,4 @@ A aplicação desenvolvida em NodeJs, com Express e SQLite, para gerar e adminis
 
 
 
+Desenvolvido por [Camila de Albuquerque}(https://www.linkedin.com/in/camila-viana-de-albuquerque-73286127/)
