@@ -28,7 +28,7 @@ class PedidoDAO {
         return new Promise((resolve, reject) => {
             this.bd.all(SELECT_BY_NUMERO_DO_PEDIDO, id, (error, rows) => {
                 if (error) {
-                    console.log(error)
+                  
                     reject({
                         "mensagem": error.message,
                         "erro": true
@@ -43,44 +43,7 @@ class PedidoDAO {
         })
     }
     
-    pegaPedidosPorMotoboy(motoboy) {
-        const SELECT_BY_MOTOBOY = `SELECT * FROM PEDIDO WHERE MOTOBOY = ?`
-        console.log(motoboy)
-        return new Promise((resolve, reject) => {
-            this.bd.all(SELECT_BY_MOTOBOY, motoboy, (error, rows) => {
-                if (error) {
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    })
-                } else {
-                    resolve({
-                        "requisicao": rows,
-                        "erro": false
-                    })
-                }
-            })
-        })
-    }
-
-    pegaPedidosPorCliente(cliente) {
-        const SELECT_BY_NOME_DO_CLIENTE = `SELECT * FROM PEDIDO WHERE NOME_DO_CLIENTE = ?`
-        return new Promise((resolve, reject) => {
-            this.bd.all(SELECT_BY_NOME_DO_CLIENTE, cliente, (error, rows) => {
-                if (error) {
-                    reject({
-                        "mensagem": error.message,
-                        "erro": true
-                    })
-                } else {
-                    resolve({
-                        "requisicao": rows,
-                        "erro": false
-                    })
-                }
-            })
-        })
-    }
+   
     
     //pegar somente os campos que podem sofrer atualização
     inserePedido(novoPedido) {
