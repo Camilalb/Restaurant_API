@@ -11,9 +11,10 @@ A aplicação desenvolvida em NodeJs, com Express e SQLite, para gerar e adminis
  -   Insomnia ou Postman
  
  ## As dependências utilizadas no projeto foram:
-![image]({https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white})
-![image]({https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white})
-![image]({https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white})
+
+![Badge](https://img.shields.io/badge/"nodemon"-"%5E2.0.15"-red)
+![Badge](https://img.shields.io/badge/"express"-"%5E4.17.1"-red)
+![Badge](https://img.shields.io/badge/"sqlite3"-"%5E5.0.2"-red)
 
   
  ## Inicializando o projeto
@@ -50,4 +51,4 @@ A aplicação desenvolvida em NodeJs, com Express e SQLite, para gerar e adminis
 
 
 
-Desenvolvido por [Camila de Albuquerque}(https://www.linkedin.com/in/camila-viana-de-albuquerque-73286127/)
+Desenvolvido por [Camila de Albuquerque](https://www.linkedin.com/in/camila-viana-de-albuquerque-73286127/)
